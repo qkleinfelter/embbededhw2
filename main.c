@@ -17,9 +17,14 @@ void question2(void){
 	}
 }
 
+void question3(void){
+	
+}
+
 // Called by startup assembly code, start of C code
 int main(void){    
 	question2();
+	question3();
 	
   while(1){
 		
