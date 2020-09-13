@@ -17,9 +17,17 @@ void question2(void){
 		factorial *= i;
 	}
 }
+int maxValueArray[] = {-1, 5, 3, 8, -10, 23, 6, 5, 2, 10};
+int arraySize = 10;
 
 void question3(void){
-	
+	int largest = maxValueArray[0];
+	int i;
+	for (i = 0; i < arraySize; i++) {
+		if (maxValueArray[i] > largest) {
+			largest = maxValueArray[i];
+		}
+	}
 }
 
 // Called by startup assembly code, start of C code
