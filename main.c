@@ -8,8 +8,9 @@
  *  
  *******************************************************************/
 
-int factorial = 1;
+
 void question2(void){
+	int factorial = 1;
 	int i;
 
 	for (i = 1; i <= 5; i++) {
