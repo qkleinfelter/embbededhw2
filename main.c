@@ -92,6 +92,69 @@ void question3(void){
 	}
 }
 
+// Global variables here–avoid declaring too many globals unnecessarily as it is not considered a good programming practice.
+int creditRatingAlice = 750;
+// 0 represents “defaulted” and 1 represents “paid” for the payment history
+int monthlyPaymentHistoryAlice[24] = {1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,0,1};
+// Global creditStatus flag to keep track of the last rewardsOrAlarm
+int creditStatus;
+// Global month flag so we know where we were last
+int month = 23;
+
+// Function called when Alice makes a monthly payment or defaults on the monthly payment.
+// Returns nothing, updates global variable creditRatingAlice.
+// opcode is 0 if default, 1 if paid
+void updateCreditRatingAlice(int opcode){
+	// If our opcode is 0 she defaulted
+	if (opcode == 0 && creditRatingAlice > 700){
+		// If her creditRating is currently above 700 then we are good to reduce it
+		// otherwise, keep her at 700 since thats the lowest she can go
+		creditRatingAlice -= 10;
+	} else if (opcode == 1 && creditRatingAlice < 800) {
+		// If her creditRating is currently below 800 then we are good to increase it
+		// otherwise, keep her at 800 since thats the highest she can go
+		creditRatingAlice += 10;
+	}
+}
+
+int rewardsOrAlarm(){
+	while(1){
+		// Update the current month so that we know where we need to look in the array
+		// because month is initally 23, it will be updated to 0 on this statement
+		// so we can start at the front, and then increment from there, before looping back to 0
+		month = (month + 1) % 24;
+		// Check if the current month is a 1, i.e. she paid
+		if(monthlyPaymentHistoryAlice[month] == 1){
+			// if her current month is a 1, then check if the last time her
+			// credit rating changed was an 800, indicating she had 100 last time,
+			// and will this time too, if so return 1 to reward her
+			if(creditRatingAlice == 800){
+				return 1;
+			}
+			// Otherwise, we'll get to here and update her (non-800) credit rating with a 1
+			updateCreditRatingAlice(1);
+		} else {
+			// In here, her current monthlyPayment is a 0, so we want to do the same
+			// thing as before except check if her last month was a 700, and if it was
+			// then we need to return 0 so there is an alarm
+			if (creditRatingAlice == 700){
+				return 0;
+			}
+			// Otherwise, we'll get to here and update her (non-700) credit rating with a 0
+			updateCreditRatingAlice(0);
+		}
+	}
+}	
+
+void question4(void){
+	while(1) {
+		// Loop endlessly and update creditStatus to the value returned by rewardsOrAlarm()
+		creditStatus = rewardsOrAlarm();
+	}
+}
+
+
+
 // Called by startup assembly code, start of C code
 int main(void){
 	question1a();
@@ -100,6 +163,7 @@ int main(void){
 	question1d();
 	question2();
 	question3();
+	question4();
 	
   while(1){
 		
