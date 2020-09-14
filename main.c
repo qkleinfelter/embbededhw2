@@ -25,10 +25,13 @@ void question1a(void){
 }
 
 void question2(void){
+	// Declare an int variable 'factorial' to be 1, we will use this to store our calculations
 	int factorial = 1;
+	// Declare an iterator variable 'i'
 	int i;
 
 	for (i = 1; i <= 5; i++) {
+		// Loop through from i = 1 while i <= 5, multiplying our factorial variable by i each time
 		factorial *= i;
 	}
 }
