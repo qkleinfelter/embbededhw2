@@ -50,7 +50,10 @@ void question1c(void){
 }
 
 void question1d(void){
-
+	volatile char ch1 = 0x34;
+	volatile char mask = 0x10;
+	
+	ch1 = ch1 ^ mask;
 }
 
 void question2(void){
