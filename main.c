@@ -36,6 +36,10 @@ void question1b(void){
 	ch1 = ch1 | mask;
 }
 
+void question1c(void){
+	
+}
+
 void question2(void){
 	// Declare an int variable 'factorial' to be 1, we will use this to store our calculations
 	int factorial = 1;
@@ -72,6 +76,7 @@ void question3(void){
 int main(void){
 	question1a();
 	question1b();
+	question1c();
 	question2();
 	question3();
 	
