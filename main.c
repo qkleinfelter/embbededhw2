@@ -37,7 +37,16 @@ void question1b(void){
 }
 
 void question1c(void){
+	// Declare ch1 to be 0x34
+	volatile char ch1 = 0x34;
+	// Declare mask to be 0xF7, which is all 1 except for bit 3, which is 0
+	volatile char mask = 0xF7;
 	
+	// Run a bitwise AND on ch1 and mask, so that bit 3 in ch1
+	// is set to 0 no matter what the value of it is currently
+	// Note: in this case because ch1 = 0x34, which has bit 3 as 0
+	// already, this doesn't change the value.
+	ch1 = ch1 & mask;
 }
 
 void question2(void){
