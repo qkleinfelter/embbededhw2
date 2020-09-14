@@ -9,11 +9,19 @@
  *******************************************************************/
 
 void question1a(void){
+	// Declare ch1 to be 0x34
 	volatile char ch1 = 0x34;
+	// Declare ch2 with no inital value
 	volatile char ch2;
+	// Declare mask to be 0x20
 	volatile char mask = 0x20;
 	
-	ch2 = (ch1 >> 4) && 1 ? 1 : 0;
+	// Shift ch1 to the right 4 bits and then run a bitwise 
+	// and on this value with a single 1, which will only be
+	// 1 if the value in bit 5 was a 1 before. Then, because
+	// 1 is 'true' in C, we can assign ch2 based on it with a 
+	// quick ternary operator
+	ch2 = (ch1 >> 4) & 1 ? 1 : 0;
 }
 
 void question2(void){
