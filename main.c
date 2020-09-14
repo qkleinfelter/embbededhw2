@@ -119,16 +119,28 @@ void updateCreditRatingAlice(int opcode){
 
 int rewardsOrAlarm(){
 	while(1){
+		// Update the current month so that we know where we need to look in the array
+		// because month is initally 23, it will be updated to 0 on this statement
+		// so we can start at the front, and then increment from there, before looping back to 0
 		month = (month + 1) % 24;
+		// Check if the current month is a 1, i.e. she paid
 		if(monthlyPaymentHistoryAlice[month] == 1){
+			// if her current month is a 1, then check if the last time her
+			// credit rating changed was an 800, indicating she had 100 last time,
+			// and will this time too, if so return 1 to reward her
 			if(creditRatingAlice == 800){
 				return 1;
 			}
+			// Otherwise, we'll get to here and update her (non-800) credit rating with a 1
 			updateCreditRatingAlice(1);
 		} else {
+			// In here, her current monthlyPayment is a 0, so we want to do the same
+			// thing as before except check if her last month was a 700, and if it was
+			// then we need to return 0 so there is an alarm
 			if (creditRatingAlice == 700){
 				return 0;
 			}
+			// Otherwise, we'll get to here and update her (non-700) credit rating with a 0
 			updateCreditRatingAlice(0);
 		}
 	}
@@ -136,6 +148,7 @@ int rewardsOrAlarm(){
 
 void question4(void){
 	while(1) {
+		// Loop endlessly and update creditStatus to the value returned by rewardsOrAlarm()
 		creditStatus = rewardsOrAlarm();
 	}
 }
