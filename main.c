@@ -35,14 +35,22 @@ void question2(void){
 		factorial *= i;
 	}
 }
+
+// Declare & init global maxValueArray as specified
 int maxValueArray[] = {-1, 5, 3, 8, -10, 23, 6, 5, 2, 10};
+// Declare & init global arraySize as specified
 int arraySize = 10;
 
 void question3(void){
+	// Declare a local largest value to be the first value so we will always get it correctly
 	int largest = maxValueArray[0];
+	// Declare a local iterator
 	int i;
 	for (i = 0; i < arraySize; i++) {
+		// Loop through the array
 		if (maxValueArray[i] > largest) {
+			// If the value at the current position of the array is larger
+			// than our current largest then set largest to be it
 			largest = maxValueArray[i];
 		}
 	}
