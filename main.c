@@ -8,6 +8,9 @@
  *  
  *******************************************************************/
 
+void question1a(void){
+	
+}
 
 void question2(void){
 	int factorial = 1;
@@ -31,7 +34,8 @@ void question3(void){
 }
 
 // Called by startup assembly code, start of C code
-int main(void){    
+int main(void){
+	question1a();
 	question2();
 	question3();
 	
