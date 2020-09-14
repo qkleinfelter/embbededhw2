@@ -25,7 +25,15 @@ void question1a(void){
 }
 
 void question1b(void){
+	// Declare ch1 to be 0x34
+	volatile char ch1 = 0x34;
+	// Declare mask to be 0x80, which puts a 1 in bit 7
+	volatile char mask = 0x80;
 	
+	// Run a bitwise OR on ch1 and mask so that bit 7 in ch1
+	// will be set to 1 no matter what the value of it is
+	// currently in ch1
+	ch1 = ch1 | mask;
 }
 
 void question2(void){
