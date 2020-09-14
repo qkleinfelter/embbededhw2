@@ -50,9 +50,13 @@ void question1c(void){
 }
 
 void question1d(void){
+	// Declare ch1 to be 0x34
 	volatile char ch1 = 0x34;
+	// Declare mask to be 0x10 which only has a 1 in bit 4
 	volatile char mask = 0x10;
 	
+	// Do a bitwise XOR to only change the value in bit 4
+	// and toggle it based on its current value
 	ch1 = ch1 ^ mask;
 }
 
