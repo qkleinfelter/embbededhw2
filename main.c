@@ -152,9 +152,33 @@ void question4(void){
 		creditStatus = rewardsOrAlarm();
 	}
 }
+#define TRUE 1
+#define FALSE 0
+#define N 25 // array size
 
+unsigned long sum(unsigned long n){
+	unsigned long partial, count;
+	for (count = 1; count < n; count++){
+		partial += count;
+	}
+	return partial;
+}
+
+unsigned long fun(unsigned long n){
+	return (n * (n+1))/2;
+}
 void question5(void){
-	
+	unsigned long num;
+	volatile unsigned long sumBuf[N], funBuf[N];
+	volatile int correctFlag = 1;
+	for (num = 0; num < N; num++){
+		sumBuf[num] = sum(num);
+		funBuf[num] = fun(num);
+		if(sumBuf[num] != funBuf[num]){
+			correctFlag = 0;
+			return;
+		}
+	}
 }
 
 // Called by startup assembly code, start of C code
@@ -165,7 +189,7 @@ int main(void){
 	question1d();
 	question2();
 	question3();
-	question4();
+	//question4();
 	question5();
 	
   while(1){
