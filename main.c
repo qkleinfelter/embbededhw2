@@ -49,6 +49,17 @@ void question1c(void){
 	ch1 = ch1 & mask;
 }
 
+void question1d(void){
+	// Declare ch1 to be 0x34
+	volatile char ch1 = 0x34;
+	// Declare mask to be 0x10 which only has a 1 in bit 4
+	volatile char mask = 0x10;
+	
+	// Do a bitwise XOR to only change the value in bit 4
+	// and toggle it based on its current value
+	ch1 = ch1 ^ mask;
+}
+
 void question2(void){
 	// Declare an int variable 'factorial' to be 1, we will use this to store our calculations
 	int factorial = 1;
@@ -86,6 +97,7 @@ int main(void){
 	question1a();
 	question1b();
 	question1c();
+	question1d();
 	question2();
 	question3();
 	
