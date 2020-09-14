@@ -96,18 +96,24 @@ void question3(void){
 int creditRatingAlice = 750;
 // 0 represents “defaulted” and 1 represents “paid” for the payment history
 int monthlyPaymentHistoryAlice[24] = {1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,0,1};
+// Global creditStatus flag to keep track of the last rewardsOrAlarm
 int creditStatus;
+// Global month flag so we know where we were last
 int month = 23;
 
+// Function called when Alice makes a monthly payment or defaults on the monthly payment.
+// Returns nothing, updates global variable creditRatingAlice.
+// opcode is 0 if default, 1 if paid
 void updateCreditRatingAlice(int opcode){
-	if (opcode == 0){
-		if (creditRatingAlice > 700){
-			creditRatingAlice -= 10;
-		}
-	} else {
-		if (creditRatingAlice < 800){
-			creditRatingAlice += 10;
-		}
+	// If our opcode is 0 she defaulted
+	if (opcode == 0 && creditRatingAlice > 700){
+		// If her creditRating is currently above 700 then we are good to reduce it
+		// otherwise, keep her at 700 since thats the lowest she can go
+		creditRatingAlice -= 10;
+	} else if (opcode == 1 && creditRatingAlice < 800) {
+		// If her creditRating is currently below 800 then we are good to increase it
+		// otherwise, keep her at 800 since thats the highest she can go
+		creditRatingAlice += 10;
 	}
 }
 
