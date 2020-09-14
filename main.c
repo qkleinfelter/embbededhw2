@@ -24,6 +24,10 @@ void question1a(void){
 	ch2 = (ch1 >> 4) & 1 ? 1 : 0;
 }
 
+void question1b(void){
+	
+}
+
 void question2(void){
 	// Declare an int variable 'factorial' to be 1, we will use this to store our calculations
 	int factorial = 1;
@@ -59,6 +63,7 @@ void question3(void){
 // Called by startup assembly code, start of C code
 int main(void){
 	question1a();
+	question1b();
 	question2();
 	question3();
 	
