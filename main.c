@@ -1,15 +1,19 @@
 /*******************************************************************
  *  main.c
- *  This is an embedded program template.
  *  
- *  Author: G. Serpen
- *  Date: Date: May 22, 2017
+ *  
+ *  Author: Quinn Kleinfelter
+ *  Date: Date: Sept. 14, 2020
  *
  *  
  *******************************************************************/
 
 void question1a(void){
+	volatile char ch1 = 0x34;
+	volatile char ch2;
+	volatile char mask = 0x20;
 	
+	ch2 = (ch1 >> 4) && 1 ? 1 : 0;
 }
 
 void question2(void){
