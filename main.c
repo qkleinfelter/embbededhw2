@@ -153,7 +153,9 @@ void question4(void){
 	}
 }
 
-
+void question5(void){
+	
+}
 
 // Called by startup assembly code, start of C code
 int main(void){
@@ -164,6 +166,7 @@ int main(void){
 	question2();
 	question3();
 	question4();
+	question5();
 	
   while(1){
 		
