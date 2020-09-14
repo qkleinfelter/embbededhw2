@@ -97,6 +97,7 @@ int creditRatingAlice = 750;
 // 0 represents “defaulted” and 1 represents “paid” for the payment history
 int monthlyPaymentHistoryAlice[24] = {1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,0,1};
 int creditStatus;
+int month = 23;
 
 void updateCreditRatingAlice(int opcode){
 	if (opcode == 0){
@@ -111,7 +112,20 @@ void updateCreditRatingAlice(int opcode){
 }
 
 int rewardsOrAlarm(){
-	return 1;
+	while(1){
+		month = (month + 1) % 24;
+		if(monthlyPaymentHistoryAlice[month] == 1){
+			if(creditRatingAlice == 800){
+				return 1;
+			}
+			updateCreditRatingAlice(1);
+		} else {
+			if (creditRatingAlice == 700){
+				return 0;
+			}
+			updateCreditRatingAlice(0);
+		}
+	}
 }	
 
 void question4(void){
