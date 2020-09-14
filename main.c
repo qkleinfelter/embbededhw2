@@ -92,6 +92,36 @@ void question3(void){
 	}
 }
 
+// Global variables here–avoid declaring too many globals unnecessarily as it is not considered a good programming practice.
+int creditRatingAlice = 750;
+// 0 represents “defaulted” and 1 represents “paid” for the payment history
+int monthlyPaymentHistoryAlice[24] = {1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,0,1};
+int creditStatus;
+
+void updateCreditRatingAlice(int opcode){
+	if (opcode == 0){
+		if (creditRatingAlice > 700){
+			creditRatingAlice -= 10;
+		}
+	} else {
+		if (creditRatingAlice < 800){
+			creditRatingAlice += 10;
+		}
+	}
+}
+
+int rewardsOrAlarm(){
+	return 1;
+}	
+
+void question4(void){
+	while(1) {
+		creditStatus = rewardsOrAlarm();
+	}
+}
+
+
+
 // Called by startup assembly code, start of C code
 int main(void){
 	question1a();
@@ -100,6 +130,7 @@ int main(void){
 	question1d();
 	question2();
 	question3();
+	question4();
 	
   while(1){
 		
