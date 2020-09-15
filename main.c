@@ -206,6 +206,8 @@ int main(void){
 	question1d();
 	question2();
 	question3();
+	// Note, to run question5 you must comment question4(), because it
+	// has an infinite loop in it
 	//question4();
 	question5();
 	
