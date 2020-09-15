@@ -153,7 +153,50 @@ void question4(void){
 	}
 }
 
+#define TRUE 1
+#define FALSE 0
+#define N 25 // array size
 
+unsigned long sum(unsigned long n){
+	// Function to loop and calculate the sum of the values below n
+	// Longs to keep track of the current sum and an interator
+	unsigned long partial, count;
+	for (count = 1; count < n; count++){
+		// Loop through from 1 to n adding to partial each number
+		partial += count;
+	}
+	// Return partial, which is our result
+	return partial;
+}
+
+unsigned long fun(unsigned long n){
+	// Function to calculate the sum of all values from 1 to n mathematically
+	return (n * (n+1))/2;
+}
+void question5(void){
+	// Function that loops through from 0 to N
+	// calculating the sum from 1 to each number
+	// and storing those values in 2 arrays
+	// as well as checking if the values are calculated to
+	// be the same, and setting correctFlag to FALSE
+	// if it isn't the same.
+	unsigned long num;
+	volatile unsigned long sumBuf[N], funBuf[N];
+	volatile int correctFlag = TRUE;
+	for (num = 0; num < N; num++){
+		// Calculate the sums with sum and fun and store them
+		// in sumBuf and funBuf
+		sumBuf[num] = sum(num);
+		funBuf[num] = fun(num);
+		if(sumBuf[num] != funBuf[num]){
+			// Check if the last values we stored are the same
+			// if not, set correctFlag to FALSE
+			// and return
+			correctFlag = FALSE;
+			return;
+		}
+	}
+}
 
 // Called by startup assembly code, start of C code
 int main(void){
@@ -163,7 +206,10 @@ int main(void){
 	question1d();
 	question2();
 	question3();
-	question4();
+	// Note, to run question5 you must comment question4(), because it
+	// has an infinite loop in it
+	//question4();
+	question5();
 	
   while(1){
 		
